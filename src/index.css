@@ -1,0 +1,28 @@
+@import "tailwindcss"; 
+ 
+@theme { 
+ 
+   --color-primary: #ff8901; 
+   --color-secondary: #fb923c; 
+ 
+   --spacing-container-sm: 2rem; 
+   --spacing-container-lg: 4rem; 
+   --spacing-container-xl: 5rem; 
+ } 
+ 
+ @utility container { 
+   margin-inline: auto; 
+   padding-inline: 2rem; 
+ 
+   @media (width >= 640px) { 
+     padding-inline: var(--spacing-container-sm); 
+   } 
+ 
+   @media (width >= 1024px) { 
+     padding-inline: var(--spacing-container-lg); 
+   } 
+ 
+   @media (width >= 1280px) { 
+     padding-inline: var(--spacing-container-xl); 
+   } 
+ } 
