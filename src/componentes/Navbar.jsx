@@ -7,18 +7,31 @@ import { PiShoppingCartLight } from "react-icons/pi";
 import { GiSlicedBread } from "react-icons/gi";
 import MenuResponsivo from './MenuResponsivo';
 import { Link } from "react-router-dom";
+import { motion } from 'motion/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <nav className="container flex justify-between items-center py-8 font-bold">
+      <motion.nav 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="container flex justify-between items-center py-6 font-bold bg-white sticky top-0 z-50 shadow-sm"
+      >
         {/* Logo */}
-        <div className="flex items-center gap-2 text-2xl uppercase">
-          <GiSlicedBread className="text-primary text-4xl" />
-          <p>el sitio de BARG CURSOS</p>
-        </div>
+        <Link to="/" className="flex items-center gap-2 text-2xl uppercase group">
+          <motion.div
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            <GiSlicedBread className="text-primary text-4xl" />
+          </motion.div>
+          <p className="group-hover:text-primary transition-colors duration-300">
+            el sitio de <span className="text-primary">BARG CURSOS</span>
+          </p>
+        </Link>
 
         {/* Menú horizontal */}
         <div className="hidden md:block">
@@ -27,9 +40,10 @@ const Navbar = () => {
               <li key={link.id}>
                 <Link 
                   to={link.url} 
-                  className="hover:text-primary transition-all duration-300"
+                  className="relative group hover:text-primary transition-all duration-300"
                 >
                   {link.title}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
             ))}
@@ -38,22 +52,38 @@ const Navbar = () => {
 
         {/* Iconos y Botón ingresar */}
         <div className="flex items-center gap-4">
-          <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200">
+          <motion.button 
+            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 137, 1, 0.1)' }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl rounded-full p-2 duration-200"
+          >
             <CiSearch />
-          </button>
-          <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200">
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 137, 1, 0.1)' }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl rounded-full p-2 duration-200"
+          >
             <PiShoppingCartLight />
-          </button>
-          <button className="hidden md:block border-2 border-primary text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white duration-200">
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden md:block border-2 border-primary text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white duration-200"
+          >
             Ingresar
-          </button>
+          </motion.button>
         </div>
 
         {/* Botón hamburguesa en móvil */}
         <div className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          <MdMenu className="text-4xl cursor-pointer" />
+          <motion.div
+            whileTap={{ scale: 0.8 }}
+          >
+            <MdMenu className="text-4xl cursor-pointer" />
+          </motion.div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Menu Responsivo */}
       <MenuResponsivo isOpen={isOpen} setIsOpen={setIsOpen} />
