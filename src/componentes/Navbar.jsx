@@ -17,7 +17,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-2 text-2xl uppercase">
           <GiSlicedBread className="text-primary text-4xl" />
-          <p>Baguette</p>
+          <p>el sitio de BARG CURSOS</p>
         </div>
 
         {/* Menú horizontal */}
