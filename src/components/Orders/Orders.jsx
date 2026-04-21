@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, ShoppingBag, MapPin, Phone, Hash, DollarSign, Trash2, LogOut, Loader2, Image as ImageIcon } from 'lucide-react';
+import { Plus, ShoppingBag, MapPin, Phone, Hash, Trash2, Loader2 } from 'lucide-react';
 import { orderService } from '../../services/api';
-import { useAuth } from '../../context/AuthContext';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -11,7 +10,6 @@ const Orders = () => {
   const [formData, setFormData] = useState({
     nombre: '', direccion: '', telefono: '', cantidad: 1, precio_final: 0, comentario: '', imagen_producto: ''
   });
-  const { user, logout } = useAuth();
 
   const fetchOrders = async () => {
     try {
@@ -58,13 +56,7 @@ const Orders = () => {
           <div className="bg-orange-600 p-2 rounded-lg">
             <ShoppingBag className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Leños <span className="text-orange-500 text-sm font-normal">Gestión</span></h1>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="text-stone-400 font-medium">Hola, <span className="text-white font-bold">{user.username}</span></span>
-          <button onClick={logout} className="p-2 hover:bg-red-500/20 text-red-400 rounded-lg transition-colors border border-red-500/20">
-            <LogOut className="w-5 h-5" />
-          </button>
+          <h1 className="text-2xl font-bold tracking-tight">Leños <span className="text-orange-500 text-sm font-normal">Gestión de Pedidos</span></h1>
         </div>
       </nav>
 
