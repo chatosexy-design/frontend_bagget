@@ -2,8 +2,10 @@
  
 @theme { 
  
-   --color-primary: #ff8901; 
-   --color-secondary: #fb923c; 
+   --color-primary: #800020; 
+   --color-secondary: #a52a2a; 
+   --color-accent: #f5f5f5;
+   --color-dark: #333333;
  
    --spacing-container-sm: 2rem; 
    --spacing-container-lg: 4rem; 

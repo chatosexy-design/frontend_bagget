@@ -1,26 +1,24 @@
-import Navbar from "./componentes/Navbar"; 
- 
- import Home from "./componentes/secciones/Home"; 
- import About from "./componentes/secciones/About"; 
- import Cursos from "./componentes/secciones/Cursos"; 
- 
- import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
- 
- const App = () => { 
-   return ( 
-     <Router> 
-       <div className="overflow-x-hidden"> 
-         <Navbar /> 
- 
-         <Routes> 
-           <Route path="/" element={<Home />} /> 
-           <Route path="/about" element={<About />} /> 
-           <Route path="/cursos" element={<Cursos />} /> 
-         </Routes> 
- 
-       </div> 
-     </Router> 
-   ); 
- }; 
- 
- export default App; 
+import React from 'react';
+import { useAuth } from './context/AuthContext';
+import Auth from './components/Auth/Auth';
+import Orders from './components/Orders/Orders';
+
+function App() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="App">
+      {!user ? <Auth /> : <Orders />}
+    </div>
+  );
+}
+
+export default App;

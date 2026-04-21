@@ -13,9 +13,9 @@ const navbarLinks = [
    }, 
    { 
      id: 3, 
-     name: "Cursos", 
-     title: "Cursos", 
-     url: "/cursos" 
+     name: "Lenos", 
+     title: "Nuestros Leños", 
+     url: "/lenos" 
    } 
  ]; 
  
